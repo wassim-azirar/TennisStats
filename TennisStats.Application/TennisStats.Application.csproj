@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TennisStats.Domain\TennisStats.Domain.csproj" />
+    <ProjectReference Include="..\TennisStats.Infrastructure\TennisStats.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
