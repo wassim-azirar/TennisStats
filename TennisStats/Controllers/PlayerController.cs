@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TennisStats.Application.Interfaces;
 
@@ -19,14 +20,19 @@ namespace TennisStats.Controllers
         public ActionResult GetAll()
         {
             var players = _playerService.GetAll();
-            return Ok(players);
+            return Ok(players.OrderBy(p => p.Id));
         }
 
         [HttpGet("{id}")]
         public ActionResult GetById(int id)
         {
             var player = _playerService.GetById(id);
-            return Ok(player);
+            if (player != null)
+            {
+                return Ok(player);
+            }
+
+            return NotFound(new {message = "This player does not exist" });
         }
 
         [HttpDelete("{id}")]
